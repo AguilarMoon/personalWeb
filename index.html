@@ -80,32 +80,46 @@
             color: #3498db;
         }
         
-        /* Sección de presentación */
+        /* Sección de presentación - MODIFICADA */
         #presentacion {
             background: linear-gradient(135deg, #3498db, #2c3e50);
             color: white;
-            text-align: center;
-            padding: 150px 0 100px;
+            padding: 120px 0 80px;
             margin-top: 70px;
         }
         
+        .presentacion-contenedor {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
         .perfil {
-            max-width: 200px;
-            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            border-radius: 20%;
             border: 5px solid white;
-            margin-bottom: 30px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+        
+        .presentacion-texto {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
         }
         
         .presentacion-texto h1 {
-            font-size: 48px;
+            font-size: 42px;
             margin-bottom: 20px;
             color: white;
         }
         
         .presentacion-texto p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 30px;
+            font-size: 18px;
+            margin-bottom: 25px;
         }
         
         .btn {
@@ -117,7 +131,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s;
-            margin: 10px;
+            margin: 10px 10px 0 0;
         }
         
         .btn:hover {
@@ -312,6 +326,21 @@
                 align-items: center;
             }
         }
+        
+        @media (max-width: 768px) {
+            .presentacion-contenedor {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .presentacion-texto {
+                text-align: center;
+            }
+            
+            .presentacion-texto h1 {
+                font-size: 36px;
+            }
+        }
     </style>
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -334,16 +363,18 @@
         </div>
     </header>
 
-    <!-- Sección de presentación -->
+    <!-- Sección de presentación MODIFICADA -->
     <section id="presentacion">
         <div class="container">
-            <img src="perfil.jpg" alt="Foto de perfil" class="perfil">
-            <div class="presentacion-texto">
-                <h1>Brandon David Aguilar Cabadas</h1>
-                <p>Estudiante de 6to semestre de Ingeniería en Sistemas Computacionales en ESCOM-IPN</p>
-                <p>Enfoque en desarrollo backend y experiencia en frontend</p>
-                <a href="cv-aguilar-brandon.pdf" class="btn" download>Descargar CV</a>
-                <a href="#public-key" class="btn">Mi Llave Pública</a>
+            <div class="presentacion-contenedor">
+                <img src="perfil.jpg" alt="Foto de perfil" class="perfil">
+                <div class="presentacion-texto">
+                    <h1>Brandon David Aguilar Cabadas</h1>
+                    <p>Estudiante de 6to semestre de Ingeniería en Sistemas Computacionales en ESCOM-IPN</p>
+                    <p>Enfoque en desarrollo backend y experiencia en frontend</p>
+                    <a href="cv-aguilar-brandon.pdf" class="btn" download>Descargar CV</a>
+                    <a href="#public-key" class="btn">Mi Llave Pública</a>
+                </div>
             </div>
         </div>
     </section>
@@ -523,14 +554,14 @@
             <h2>Mis Hobbies</h2>
             <div class="hobbies-grid">
                 <div class="hobbie">
-                    <img src="lectura.png" alt="Programación">
+                    <img src="lectura.png" alt="Lectura">
                     <div class="hobbie-contenido">
-                        <h3>Programación</h3>
+                        <h3>Lectura</h3>
                         <p>Lector activo enfocado en fantasia, mundos diferentes, contexto detras de cada escrito. Mi interés se centra en el análisis crítico de la estructura narrativa, el desarrollo de personajes y la exploración de temas complejos. Disfruto deconstruyendo el estilo del autor y su impacto en el contexto literario.</p>
                     </div>
                 </div>
                 <div class="hobbie">
-                    <img src="f1.png" alt="Tecnología">
+                    <img src="f1.png" alt="Fórmula 1">
                     <div class="hobbie-contenido">
                         <h3>Fórmula 1</h3>
                         <p>Seguidor de la Fórmula 1, con interés particular en el análisis de la estrategia de carrera, la telemetría y el desarrollo de la ingeniería aerodinámica. Evalúo el rendimiento de pilotos y equipos basándome en la gestión de neumáticos, las paradas en pits y la adaptación a las normativas técnicas de cada temporada.</p>
@@ -558,7 +589,7 @@
                     <p>Los británicos compartieron el telegrama descifrado con Estados Unidos. La publicación del mensaje causó una indignación masiva en el público estadounidense y fue un factor decisivo que impulsó al Congreso de EE. UU. a declarar la guerra a Alemania pocos meses después, alterando el equilibrio de la Primera Guerra Mundial.</p>
                 </div>
                 <div class="criptografia-imagen">
-                    <img src="zimmermann.png" alt="Alan Turing">
+                    <img src="zimmermann.png" alt="Telegrama Zimmermann">
                 </div>
             </div>
         </section>
@@ -567,7 +598,6 @@
         <section id="public-key" class="seccion">
             <h2>Mi Llave Pública</h2>
             <p>Problemas Tecnicos :) Vuelva en la proxima actualizacion con la practica RSA</p>
-            </div>
         </section>
     </div>
 
@@ -575,7 +605,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Brandon David Aguilar Cabadas</p>
-            <p>Página web personal creada para mi clase favorita Cryto</p>
+            <p>Página web personal creada para mi clase favorita Crypto</p>
         </div>
     </footer>
 
