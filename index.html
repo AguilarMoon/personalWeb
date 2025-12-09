@@ -5,23 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brandon Aguilar - Página Personal</title>
     <style>
-        /* Estilos generales - VAPORWAVE/SYNTHWAVE */
+        /* Importar fuente TRON-style */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Estilos generales - TRON AESTHETIC */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Courier New', 'Arial Narrow', sans-serif;
+            font-family: 'Orbitron', 'Courier New', monospace;
         }
         
         body {
-            background-color: #0a0a1a;
-            color: #ffffff;
+            background-color: #000000;
+            color: #00d9ff;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
         }
         
-        /* Efecto de rejilla de fondo (grid) - estilo synthwave */
+        /* Efecto de rejilla de fondo (grid) - estilo TRON */
         body::before {
             content: "";
             position: fixed;
@@ -30,27 +33,38 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(42, 101, 229, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(42, 101, 229, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
+                linear-gradient(rgba(0, 217, 255, 0.15) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.15) 2px, transparent 2px);
+            background-size: 80px 80px;
             z-index: -3;
             pointer-events: none;
+            animation: gridMove 20s linear infinite;
         }
         
-        /* Sol stylizado en el fondo */
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(80px); }
+        }
+        
+        /* Líneas de energía en el fondo */
         body::after {
             content: "";
             position: fixed;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #E5AA2A 0%, rgba(229, 170, 42, 0.5) 30%, transparent 70%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, #000000 100%),
+                        linear-gradient(90deg, transparent 48%, rgba(0, 217, 255, 0.3) 50%, transparent 52%);
+            background-size: 100% 100%, 200px 100%;
             z-index: -2;
-            filter: blur(10px);
-            opacity: 0.7;
             pointer-events: none;
+            animation: energyPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes energyPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
         
         .container {
@@ -71,18 +85,19 @@
             margin-bottom: 15px;
         }
         
-        /* Header y navegación - Estilo synthwave */
+        /* Header y navegación - Estilo TRON */
         header {
-            background: rgba(10, 10, 26, 0.9);
-            color: white;
+            background: rgba(0, 0, 0, 0.95);
+            color: #00d9ff;
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 5px 15px rgba(170, 42, 229, 0.3);
+            box-shadow: 0 5px 30px rgba(0, 217, 255, 0.5),
+                        0 0 50px rgba(0, 217, 255, 0.3) inset;
             backdrop-filter: blur(10px);
-            border-bottom: 2px solid #AA2AE5;
+            border-bottom: 3px solid #00d9ff;
         }
         
         nav {
@@ -92,11 +107,19 @@
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #E5AA2A;
-            text-shadow: 0 0 10px rgba(229, 170, 42, 0.7);
-            letter-spacing: 1px;
+            font-size: 28px;
+            font-weight: 900;
+            color: #00d9ff;
+            text-shadow: 0 0 10px #00d9ff,
+                         0 0 20px #00d9ff,
+                         0 0 30px #00d9ff;
+            letter-spacing: 3px;
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff, 0 0 30px #00d9ff; }
+            50% { text-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff, 0 0 60px #00d9ff; }
         }
         
         .nav-links {
@@ -109,62 +132,74 @@
         }
         
         .nav-links a {
-            color: #65E52A;
+            color: #00d9ff;
             text-decoration: none;
             transition: all 0.3s;
-            padding: 5px 10px;
+            padding: 8px 15px;
+            border: 2px solid transparent;
             border-radius: 3px;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
         }
         
         .nav-links a:hover {
-            color: #E5AA2A;
-            background-color: rgba(170, 42, 229, 0.2);
-            text-shadow: 0 0 10px rgba(229, 170, 42, 0.7);
-            box-shadow: 0 0 15px rgba(170, 42, 229, 0.5);
+            color: #ffffff;
+            border: 2px solid #00d9ff;
+            text-shadow: 0 0 10px #00d9ff;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.6),
+                        0 0 30px rgba(0, 217, 255, 0.4) inset;
+            background-color: rgba(0, 217, 255, 0.1);
         }
         
-        /* Sección de presentación - Estilo synthwave */
+        /* Sección de presentación - Estilo TRON */
         #presentacion {
-            background: linear-gradient(135deg, 
-                rgba(42, 101, 229, 0.9) 0%, 
-                rgba(76, 42, 229, 0.9) 50%, 
-                rgba(10, 10, 26, 1) 100%);
-            color: white;
+            background: linear-gradient(180deg, 
+                rgba(0, 0, 0, 1) 0%, 
+                rgba(0, 40, 70, 0.8) 50%, 
+                rgba(0, 0, 0, 1) 100%);
+            color: #00d9ff;
             padding: 120px 0 80px;
             margin-top: 70px;
             position: relative;
             overflow: hidden;
         }
         
-        /* Efecto de montañas estilizadas */
+        /* Líneas de energía horizontales */
         #presentacion::before {
             content: "";
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 150px;
-            background: linear-gradient(to top, 
-                rgba(10, 10, 26, 1) 0%, 
-                transparent 100%);
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 50px,
+                rgba(0, 217, 255, 0.1) 50px,
+                rgba(0, 217, 255, 0.1) 52px
+            );
             z-index: 0;
+            animation: lineMove 5s linear infinite;
         }
         
+        @keyframes lineMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(52px); }
+        }
+        
+        /* Efecto de circuitos en el fondo */
         #presentacion::after {
             content: "";
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px;
-            background-image: 
-                linear-gradient(45deg, transparent 65%, #4C2AE5 65%, #4C2AE5 70%, transparent 70%),
-                linear-gradient(-45deg, transparent 65%, #4C2AE5 65%, #4C2AE5 70%, transparent 70%);
-            background-size: 60px 100px;
-            background-repeat: repeat-x;
-            opacity: 0.3;
+            height: 200px;
+            background: linear-gradient(to top, 
+                rgba(0, 0, 0, 1) 0%, 
+                transparent 100%);
             z-index: 0;
         }
         
@@ -182,16 +217,22 @@
             width: 250px;
             height: 250px;
             border-radius: 20%;
-            border: 5px solid #E5AA2A;
+            border: 4px solid #00d9ff;
             flex-shrink: 0;
             object-fit: cover;
-            box-shadow: 0 0 30px rgba(229, 170, 42, 0.7);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.8),
+                        0 0 60px rgba(0, 217, 255, 0.5),
+                        0 0 100px rgba(0, 217, 255, 0.3);
             transition: all 0.3s;
+            filter: brightness(1.1) contrast(1.2);
         }
         
         .perfil:hover {
-            box-shadow: 0 0 50px rgba(229, 170, 42, 1);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 1),
+                        0 0 80px rgba(0, 217, 255, 0.7),
+                        0 0 120px rgba(0, 217, 255, 0.5);
             transform: scale(1.05);
+            border-color: #ffffff;
         }
         
         .presentacion-texto {
@@ -203,49 +244,74 @@
         .presentacion-texto h1 {
             font-size: 42px;
             margin-bottom: 20px;
-            color: #E5AA2A;
-            text-shadow: 0 0 15px rgba(229, 170, 42, 0.7);
-            letter-spacing: 1px;
+            color: #00d9ff;
+            text-shadow: 0 0 10px #00d9ff,
+                         0 0 20px #00d9ff,
+                         0 0 40px #00d9ff;
+            letter-spacing: 3px;
+            font-weight: 900;
         }
         
         .presentacion-texto p {
             font-size: 18px;
             margin-bottom: 25px;
             color: #ffffff;
+            text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
         }
         
         .btn {
             display: inline-block;
-            background-color: #AA2AE5;
-            color: white;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 217, 255, 0.1));
+            color: #00d9ff;
             padding: 12px 30px;
-            border-radius: 5px;
+            border: 2px solid #00d9ff;
+            border-radius: 0;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             transition: all 0.3s;
             margin: 10px 10px 0 0;
-            border: none;
             cursor: pointer;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(170, 42, 229, 0.4);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4),
+                        0 0 30px rgba(0, 217, 255, 0.2) inset;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
-            background-color: #E5AA2A;
-            color: #0a0a1a;
-            box-shadow: 0 0 25px rgba(229, 170, 42, 0.9);
+            background: rgba(0, 217, 255, 0.3);
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.8),
+                        0 0 50px rgba(0, 217, 255, 0.5) inset;
             transform: translateY(-3px);
+            border-color: #ffffff;
         }
         
-        /* Secciones de contenido - Estilo synthwave */
+        /* Secciones de contenido - Estilo TRON */
         .seccion {
-            background-color: rgba(20, 20, 40, 0.8);
+            background: linear-gradient(135deg, rgba(0, 30, 50, 0.6), rgba(0, 0, 0, 0.9));
             margin-bottom: 30px;
-            border-radius: 10px;
+            border-radius: 0;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(42, 101, 229, 0.2);
-            border: 1px solid rgba(76, 42, 229, 0.5);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3),
+                        0 0 50px rgba(0, 217, 255, 0.1) inset;
+            border: 2px solid rgba(0, 217, 255, 0.5);
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(5px);
@@ -256,32 +322,58 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent,
+                #00d9ff,
+                transparent);
+            animation: scanline 3s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .seccion::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 3px;
             height: 100%;
-            background: linear-gradient(to bottom, #2A65E5, #AA2AE5);
+            background: linear-gradient(180deg, 
+                transparent,
+                #00d9ff,
+                transparent);
         }
         
         .seccion h2 {
-            color: #65E52A;
-            text-shadow: 0 0 10px rgba(101, 229, 42, 0.5);
-            font-size: 28px;
-            border-bottom: 2px solid #4C2AE5;
-            padding-bottom: 10px;
+            color: #00d9ff;
+            text-shadow: 0 0 10px #00d9ff,
+                         0 0 20px #00d9ff;
+            font-size: 32px;
+            border-bottom: 3px solid #00d9ff;
+            padding-bottom: 15px;
             margin-bottom: 30px;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
+            font-weight: 900;
         }
         
         .seccion h3 {
-            color: #E5AA2A;
+            color: #ffffff;
             margin-top: 20px;
-            text-shadow: 0 0 5px rgba(229, 170, 42, 0.5);
+            text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
+            font-weight: 700;
+            letter-spacing: 2px;
         }
         
         /* Formación académica */
         .formacion-item {
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(76, 42, 229, 0.3);
+            border-bottom: 2px solid rgba(0, 217, 255, 0.3);
         }
         
         .formacion-item:last-child {
@@ -289,7 +381,7 @@
         }
         
         .formacion-item h3 {
-            color: #65E52A;
+            color: #00d9ff;
         }
         
         /* Información de contacto */
@@ -303,23 +395,27 @@
         .contacto-item {
             display: flex;
             align-items: center;
-            background-color: rgba(42, 101, 229, 0.1);
-            padding: 10px 15px;
-            border-radius: 5px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 217, 255, 0.05));
+            padding: 12px 18px;
+            border-radius: 0;
             flex: 1 1 200px;
-            border: 1px solid rgba(42, 101, 229, 0.3);
+            border: 2px solid rgba(0, 217, 255, 0.4);
             transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.2) inset;
         }
         
         .contacto-item:hover {
-            background-color: rgba(42, 101, 229, 0.2);
-            border-color: #2A65E5;
+            background: rgba(0, 217, 255, 0.2);
+            border-color: #00d9ff;
             transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.5),
+                        0 0 35px rgba(0, 217, 255, 0.3) inset;
         }
         
         .contacto-item i {
             margin-right: 10px;
-            color: #65E52A;
+            color: #00d9ff;
+            text-shadow: 0 0 5px #00d9ff;
         }
         
         /* Redes sociales */
@@ -334,26 +430,31 @@
         .red-social {
             display: flex;
             align-items: center;
-            background-color: rgba(170, 42, 229, 0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(0, 217, 255, 0.05));
+            padding: 12px 24px;
+            border-radius: 0;
             text-decoration: none;
-            color: #ffffff;
+            color: #00d9ff;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(170, 42, 229, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            border: 2px solid rgba(0, 217, 255, 0.5);
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .red-social:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(170, 42, 229, 0.5);
-            background-color: rgba(170, 42, 229, 0.2);
-            color: #E5AA2A;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.7),
+                        0 0 40px rgba(0, 217, 255, 0.4) inset;
+            background: rgba(0, 217, 255, 0.2);
+            color: #ffffff;
+            border-color: #00d9ff;
         }
         
         .red-social i {
             margin-right: 10px;
             font-size: 20px;
+            text-shadow: 0 0 5px #00d9ff;
         }
         
         /* Hobbies */
@@ -365,25 +466,45 @@
         }
         
         .hobbie {
-            background-color: rgba(42, 101, 229, 0.1);
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 0, 0, 0.8));
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
             transition: all 0.3s;
-            border: 1px solid rgba(76, 42, 229, 0.3);
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            position: relative;
+        }
+        
+        .hobbie::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00d9ff, transparent, #00d9ff);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .hobbie:hover::before {
+            opacity: 1;
         }
         
         .hobbie:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(170, 42, 229, 0.4);
-            border-color: #AA2AE5;
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.6),
+                        0 0 70px rgba(0, 217, 255, 0.4);
+            border-color: #00d9ff;
         }
         
         .hobbie img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 2px solid #AA2AE5;
+            border-bottom: 3px solid #00d9ff;
+            filter: brightness(0.9) contrast(1.2);
         }
         
         .hobbie-contenido {
@@ -391,8 +512,9 @@
         }
         
         .hobbie h3 {
-            color: #65E52A;
+            color: #00d9ff;
             margin-bottom: 10px;
+            text-shadow: 0 0 10px #00d9ff;
         }
         
         /* Criptografía */
@@ -413,9 +535,9 @@
         
         .criptografia-imagen img {
             max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border: 2px solid #E5AA2A;
+            border-radius: 0;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+            border: 3px solid #00d9ff;
         }
         
         /* Tablas para certificaciones y proyectos */
@@ -426,15 +548,18 @@
         }
         
         th, td {
-            padding: 12px 15px;
+            padding: 15px 18px;
             text-align: left;
-            border-bottom: 1px solid rgba(76, 42, 229, 0.3);
+            border-bottom: 2px solid rgba(0, 217, 255, 0.3);
         }
         
         th {
-            background-color: rgba(42, 101, 229, 0.2);
-            font-weight: bold;
-            color: #65E52A;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 217, 255, 0.1));
+            font-weight: 800;
+            color: #00d9ff;
+            text-shadow: 0 0 10px #00d9ff;
+            border-bottom: 3px solid #00d9ff;
+            letter-spacing: 2px;
         }
         
         tr {
@@ -442,7 +567,8 @@
         }
         
         tr:hover {
-            background-color: rgba(170, 42, 229, 0.1);
+            background: rgba(0, 217, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3) inset;
         }
         
         /* Habilidades */
@@ -455,10 +581,11 @@
         
         .categoria-habilidades {
             flex: 1 1 300px;
-            background-color: rgba(42, 101, 229, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(76, 42, 229, 0.3);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 0, 0, 0.6));
+            padding: 25px;
+            border-radius: 0;
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2) inset;
         }
         
         .habilidades-lista {
@@ -469,29 +596,37 @@
         }
         
         .habilidad {
-            background: linear-gradient(45deg, #2A65E5, #4C2AE5);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.3), rgba(0, 217, 255, 0.1));
+            color: #00d9ff;
+            padding: 10px 18px;
+            border-radius: 0;
+            border: 2px solid #00d9ff;
             font-size: 14px;
-            box-shadow: 0 5px 15px rgba(42, 101, 229, 0.3);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
             transition: all 0.3s;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .habilidad:hover {
-            background: linear-gradient(45deg, #AA2AE5, #E5AA2A);
+            background: rgba(0, 217, 255, 0.3);
+            color: #ffffff;
             transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.7),
+                        0 0 35px rgba(0, 217, 255, 0.4) inset;
         }
         
         /* Footer */
         footer {
-            background: linear-gradient(to right, #2A65E5, #4C2AE5);
-            color: white;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 40, 70, 0.8));
+            color: #00d9ff;
             text-align: center;
             padding: 30px 0;
             margin-top: 50px;
             position: relative;
             overflow: hidden;
+            border-top: 3px solid #00d9ff;
+            box-shadow: 0 -5px 30px rgba(0, 217, 255, 0.3);
         }
         
         footer::before {
@@ -500,24 +635,36 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #E5AA2A, #65E52A);
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 50px,
+                rgba(0, 217, 255, 0.05) 50px,
+                rgba(0, 217, 255, 0.05) 52px
+            );
+            z-index: 0;
         }
         
         footer p {
             margin-bottom: 10px;
-            color: #ffffff;
+            color: #00d9ff;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 5px #00d9ff;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
         
         /* Efectos de neón para títulos principales */
         .neon-text {
-            color: #fff;
+            color: #00d9ff;
             text-shadow: 
-                0 0 5px #AA2AE5,
-                0 0 10px #AA2AE5,
-                0 0 20px #AA2AE5,
-                0 0 40px #AA2AE5,
-                0 0 80px #AA2AE5;
+                0 0 5px #00d9ff,
+                0 0 10px #00d9ff,
+                0 0 20px #00d9ff,
+                0 0 40px #00d9ff,
+                0 0 80px #00d9ff;
         }
         
         /* Responsive */
@@ -543,7 +690,7 @@
             }
             
             .nav-links {
-                display: none; /* Para móviles, podrías añadir un menú hamburguesa */
+                display: none;
             }
         }
         
@@ -558,11 +705,9 @@
             animation: float 5s ease-in-out infinite;
         }
     </style>
-    <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header y navegación -->
     <header>
         <div class="container">
             <nav>
@@ -579,7 +724,6 @@
         </div>
     </header>
 
-    <!-- Sección de presentación -->
     <section id="presentacion">
         <div class="container">
             <div class="presentacion-contenedor">
@@ -596,7 +740,6 @@
     </section>
 
     <div class="container">
-        <!-- Sección de formación académica -->
         <section id="formacion" class="seccion">
             <h2>FORMACIÓN ACADÉMICA</h2>
             <div class="formacion-item">
@@ -643,7 +786,6 @@
             </div>
         </section>
 
-        <!-- Sección de certificaciones -->
         <section id="certificaciones" class="seccion">
             <h2>CERTIFICACIONES</h2>
             <table>
@@ -666,7 +808,6 @@
             </table>
         </section>
 
-        <!-- Sección de proyectos -->
         <section id="proyectos" class="seccion">
             <h2>PROYECTOS</h2>
             <table>
@@ -713,7 +854,6 @@
             </table>
         </section>
 
-        <!-- Sección de habilidades -->
         <section id="habilidades" class="seccion">
             <h2>LENGUAJES Y HERRAMIENTAS</h2>
             <div class="habilidades-container">
@@ -761,7 +901,6 @@
             </div>
         </section>
 
-        <!-- Sección de hobbies -->
         <section id="hobbies" class="seccion">
             <h2>MIS HOBBIES</h2>
             <div class="hobbies-grid">
@@ -789,7 +928,6 @@
             </div>
         </section>
 
-        <!-- Sección de criptografía -->
         <section id="criptografia" class="seccion">
             <h2>ACERCA DE CRIPTOGRAFÍA</h2>
             <div class="criptografia-contenido">
@@ -807,16 +945,13 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 BRANDON DAVID AGUILAR CABADAS</p>
             <p>PÁGINA WEB PERSONAL CREADA PARA MI CLASE FAVORITA: CRYPTO</p>
-            
         </div>
     </footer>
 
-    <!-- JavaScript para smooth scrolling -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -835,7 +970,6 @@
             });
         });
         
-        // Efecto de parpadeo de neón aleatorio
         const neonTitles = document.querySelectorAll('.neon-text, .seccion h2');
         
         setInterval(() => {
