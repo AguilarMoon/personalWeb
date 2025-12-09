@@ -5,18 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brandon Aguilar - Página Personal</title>
     <style>
-        /* Estilos generales */
+        /* Estilos generales - VAPORWAVE/SYNTHWAVE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Courier New', 'Arial Narrow', sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #0a0a1a;
+            color: #ffffff;
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Efecto de rejilla de fondo (grid) - estilo synthwave */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 101, 229, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 101, 229, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -3;
+            pointer-events: none;
+        }
+        
+        /* Sol stylizado en el fondo */
+        body::after {
+            content: "";
+            position: fixed;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #E5AA2A 0%, rgba(229, 170, 42, 0.5) 30%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            filter: blur(10px);
+            opacity: 0.7;
+            pointer-events: none;
         }
         
         .container {
@@ -31,23 +65,24 @@
         
         h1, h2, h3 {
             margin-bottom: 20px;
-            color: #2c3e50;
         }
         
         p {
             margin-bottom: 15px;
         }
         
-        /* Header y navegación */
+        /* Header y navegación - Estilo synthwave */
         header {
-            background-color: #2c3e50;
+            background: rgba(10, 10, 26, 0.9);
             color: white;
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(170, 42, 229, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #AA2AE5;
         }
         
         nav {
@@ -59,6 +94,9 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
+            color: #E5AA2A;
+            text-shadow: 0 0 10px rgba(229, 170, 42, 0.7);
+            letter-spacing: 1px;
         }
         
         .nav-links {
@@ -71,21 +109,63 @@
         }
         
         .nav-links a {
-            color: white;
+            color: #65E52A;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
         
         .nav-links a:hover {
-            color: #3498db;
+            color: #E5AA2A;
+            background-color: rgba(170, 42, 229, 0.2);
+            text-shadow: 0 0 10px rgba(229, 170, 42, 0.7);
+            box-shadow: 0 0 15px rgba(170, 42, 229, 0.5);
         }
         
-        /* Sección de presentación - MODIFICADA */
+        /* Sección de presentación - Estilo synthwave */
         #presentacion {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
+            background: linear-gradient(135deg, 
+                rgba(42, 101, 229, 0.9) 0%, 
+                rgba(76, 42, 229, 0.9) 50%, 
+                rgba(10, 10, 26, 1) 100%);
             color: white;
             padding: 120px 0 80px;
             margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Efecto de montañas estilizadas */
+        #presentacion::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, 
+                rgba(10, 10, 26, 1) 0%, 
+                transparent 100%);
+            z-index: 0;
+        }
+        
+        #presentacion::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-image: 
+                linear-gradient(45deg, transparent 65%, #4C2AE5 65%, #4C2AE5 70%, transparent 70%),
+                linear-gradient(-45deg, transparent 65%, #4C2AE5 65%, #4C2AE5 70%, transparent 70%);
+            background-size: 60px 100px;
+            background-repeat: repeat-x;
+            opacity: 0.3;
+            z-index: 0;
         }
         
         .presentacion-contenedor {
@@ -94,15 +174,24 @@
             justify-content: center;
             gap: 50px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
         
         .perfil {
             width: 250px;
             height: 250px;
             border-radius: 20%;
-            border: 5px solid white;
+            border: 5px solid #E5AA2A;
             flex-shrink: 0;
             object-fit: cover;
+            box-shadow: 0 0 30px rgba(229, 170, 42, 0.7);
+            transition: all 0.3s;
+        }
+        
+        .perfil:hover {
+            box-shadow: 0 0 50px rgba(229, 170, 42, 1);
+            transform: scale(1.05);
         }
         
         .presentacion-texto {
@@ -114,48 +203,93 @@
         .presentacion-texto h1 {
             font-size: 42px;
             margin-bottom: 20px;
-            color: white;
+            color: #E5AA2A;
+            text-shadow: 0 0 15px rgba(229, 170, 42, 0.7);
+            letter-spacing: 1px;
         }
         
         .presentacion-texto p {
             font-size: 18px;
             margin-bottom: 25px;
+            color: #ffffff;
         }
         
         .btn {
             display: inline-block;
-            background-color: #e74c3c;
+            background-color: #AA2AE5;
             color: white;
             padding: 12px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             margin: 10px 10px 0 0;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(170, 42, 229, 0.4);
         }
         
         .btn:hover {
-            background-color: #c0392b;
+            background-color: #E5AA2A;
+            color: #0a0a1a;
+            box-shadow: 0 0 25px rgba(229, 170, 42, 0.9);
+            transform: translateY(-3px);
         }
         
-        /* Secciones de contenido */
+        /* Secciones de contenido - Estilo synthwave */
         .seccion {
-            background-color: white;
+            background-color: rgba(20, 20, 40, 0.8);
             margin-bottom: 30px;
             border-radius: 10px;
             padding: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(42, 101, 229, 0.2);
+            border: 1px solid rgba(76, 42, 229, 0.5);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .seccion::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2A65E5, #AA2AE5);
+        }
+        
+        .seccion h2 {
+            color: #65E52A;
+            text-shadow: 0 0 10px rgba(101, 229, 42, 0.5);
+            font-size: 28px;
+            border-bottom: 2px solid #4C2AE5;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        .seccion h3 {
+            color: #E5AA2A;
+            margin-top: 20px;
+            text-shadow: 0 0 5px rgba(229, 170, 42, 0.5);
         }
         
         /* Formación académica */
         .formacion-item {
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(76, 42, 229, 0.3);
         }
         
         .formacion-item:last-child {
             border-bottom: none;
+        }
+        
+        .formacion-item h3 {
+            color: #65E52A;
         }
         
         /* Información de contacto */
@@ -169,15 +303,23 @@
         .contacto-item {
             display: flex;
             align-items: center;
-            background-color: #f8f9fa;
+            background-color: rgba(42, 101, 229, 0.1);
             padding: 10px 15px;
             border-radius: 5px;
             flex: 1 1 200px;
+            border: 1px solid rgba(42, 101, 229, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .contacto-item:hover {
+            background-color: rgba(42, 101, 229, 0.2);
+            border-color: #2A65E5;
+            transform: translateY(-3px);
         }
         
         .contacto-item i {
             margin-right: 10px;
-            color: #3498db;
+            color: #65E52A;
         }
         
         /* Redes sociales */
@@ -192,18 +334,21 @@
         .red-social {
             display: flex;
             align-items: center;
-            background-color: #f8f9fa;
+            background-color: rgba(170, 42, 229, 0.1);
             padding: 10px 20px;
             border-radius: 50px;
             text-decoration: none;
-            color: #333;
+            color: #ffffff;
             transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(170, 42, 229, 0.3);
         }
         
         .red-social:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(170, 42, 229, 0.5);
+            background-color: rgba(170, 42, 229, 0.2);
+            color: #E5AA2A;
         }
         
         .red-social i {
@@ -220,25 +365,34 @@
         }
         
         .hobbie {
-            background-color: #f8f9fa;
+            background-color: rgba(42, 101, 229, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: 1px solid rgba(76, 42, 229, 0.3);
         }
         
         .hobbie:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(170, 42, 229, 0.4);
+            border-color: #AA2AE5;
         }
         
         .hobbie img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            border-bottom: 2px solid #AA2AE5;
         }
         
         .hobbie-contenido {
             padding: 20px;
+        }
+        
+        .hobbie h3 {
+            color: #65E52A;
+            margin-bottom: 10px;
         }
         
         /* Criptografía */
@@ -260,7 +414,8 @@
         .criptografia-imagen img {
             max-width: 100%;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid #E5AA2A;
         }
         
         /* Tablas para certificaciones y proyectos */
@@ -273,12 +428,21 @@
         th, td {
             padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid rgba(76, 42, 229, 0.3);
         }
         
         th {
-            background-color: #f8f9fa;
+            background-color: rgba(42, 101, 229, 0.2);
             font-weight: bold;
+            color: #65E52A;
+        }
+        
+        tr {
+            transition: all 0.3s;
+        }
+        
+        tr:hover {
+            background-color: rgba(170, 42, 229, 0.1);
         }
         
         /* Habilidades */
@@ -291,9 +455,10 @@
         
         .categoria-habilidades {
             flex: 1 1 300px;
-            background-color: #f8f9fa;
+            background-color: rgba(42, 101, 229, 0.1);
             padding: 20px;
             border-radius: 10px;
+            border: 1px solid rgba(76, 42, 229, 0.3);
         }
         
         .habilidades-lista {
@@ -304,19 +469,55 @@
         }
         
         .habilidad {
-            background-color: #3498db;
+            background: linear-gradient(45deg, #2A65E5, #4C2AE5);
             color: white;
-            padding: 5px 10px;
+            padding: 8px 15px;
             border-radius: 20px;
             font-size: 14px;
+            box-shadow: 0 5px 15px rgba(42, 101, 229, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .habilidad:hover {
+            background: linear-gradient(45deg, #AA2AE5, #E5AA2A);
+            transform: scale(1.05);
         }
         
         /* Footer */
         footer {
-            background-color: #2c3e50;
+            background: linear-gradient(to right, #2A65E5, #4C2AE5);
             color: white;
             text-align: center;
             padding: 30px 0;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #E5AA2A, #65E52A);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        /* Efectos de neón para títulos principales */
+        .neon-text {
+            color: #fff;
+            text-shadow: 
+                0 0 5px #AA2AE5,
+                0 0 10px #AA2AE5,
+                0 0 20px #AA2AE5,
+                0 0 40px #AA2AE5,
+                0 0 80px #AA2AE5;
         }
         
         /* Responsive */
@@ -340,6 +541,21 @@
             .presentacion-texto h1 {
                 font-size: 36px;
             }
+            
+            .nav-links {
+                display: none; /* Para móviles, podrías añadir un menú hamburguesa */
+            }
+        }
+        
+        /* Animaciones sutiles */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
         }
     </style>
     <!-- Font Awesome para iconos -->
@@ -350,30 +566,30 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Brandon Aguilar</div>
+                <div class="logo">BRANDON AGUILAR</div>
                 <ul class="nav-links">
-                    <li><a href="#presentacion">Inicio</a></li>
-                    <li><a href="#formacion">Formación</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
-                    <li><a href="#hobbies">Hobbies</a></li>
-                    <li><a href="#criptografia">Criptografía</a></li>
+                    <li><a href="#presentacion">INICIO</a></li>
+                    <li><a href="#formacion">FORMACIÓN</a></li>
+                    <li><a href="#proyectos">PROYECTOS</a></li>
+                    <li><a href="#habilidades">HABILIDADES</a></li>
+                    <li><a href="#hobbies">HOBBIES</a></li>
+                    <li><a href="#criptografia">CRIPTOGRAFÍA</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Sección de presentación MODIFICADA -->
+    <!-- Sección de presentación -->
     <section id="presentacion">
         <div class="container">
             <div class="presentacion-contenedor">
-                <img src="perfil.jpg" alt="Foto de perfil" class="perfil">
+                <img src="perfil.jpg" alt="Foto de perfil" class="perfil floating">
                 <div class="presentacion-texto">
-                    <h1>Brandon David Aguilar Cabadas</h1>
+                    <h1 class="neon-text">BRANDON DAVID AGUILAR CABADAS</h1>
                     <p>Estudiante de 6to semestre de Ingeniería en Sistemas Computacionales en ESCOM-IPN</p>
                     <p>Enfoque en desarrollo backend y experiencia en frontend</p>
-                    <a href="cv-aguilar-brandon.pdf" class="btn" target="_blank">Ver CV</a>
-                    <a href="public_key.pem" class="btn" download>Mi Llave Pública</a>
+                    <a href="cv-aguilar-brandon.pdf" class="btn" target="_blank">VER CV</a>
+                    <a href="public_key.pem" class="btn" download>MI LLAVE PÚBLICA</a>
                 </div>
             </div>
         </div>
@@ -382,7 +598,7 @@
     <div class="container">
         <!-- Sección de formación académica -->
         <section id="formacion" class="seccion">
-            <h2>Formación Académica</h2>
+            <h2>FORMACIÓN ACADÉMICA</h2>
             <div class="formacion-item">
                 <h3>IPN - ESCOM</h3>
                 <p><strong>Ingeniería en Sistemas Computacionales</strong> | 2022 - Actualidad</p>
@@ -394,27 +610,23 @@
                 <p>Media Superior</p>
             </div>
             
-            <h3>Contacto</h3>
+            <h3>CONTACTO</h3>
             <div class="info-contacto">
                 <div class="contacto-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Iztapalapa, 09140, CDMX</span>
+                    <span>Iztapalapa, CDMX</span>
                 </div>
                 <div class="contacto-item">
                     <i class="fas fa-phone"></i>
-                    <span>56.3209.4344</span>
+                    <span>56 3209 4344</span>
                 </div>
                 <div class="contacto-item">
                     <i class="fas fa-envelope"></i>
                     <span>bra2aguica@gmail.com</span>
                 </div>
-                <div class="contacto-item">
-                    <i class="fas fa-globe"></i>
-                    <span>https://aguilarmoon.github.io/</span>
-                </div>
             </div>
             
-            <h3>Redes Sociales</h3>
+            <h3>REDES SOCIALES</h3>
             <div class="redes-sociales">
                 <a href="https://github.com/aguilarmoon" class="red-social">
                     <i class="fab fa-github"></i> GitHub
@@ -433,7 +645,7 @@
 
         <!-- Sección de certificaciones -->
         <section id="certificaciones" class="seccion">
-            <h2>Certificaciones</h2>
+            <h2>CERTIFICACIONES</h2>
             <table>
                 <tr>
                     <th>Certificación</th>
@@ -456,7 +668,7 @@
 
         <!-- Sección de proyectos -->
         <section id="proyectos" class="seccion">
-            <h2>Proyectos</h2>
+            <h2>PROYECTOS</h2>
             <table>
                 <tr>
                     <th>Proyecto</th>
@@ -503,7 +715,7 @@
 
         <!-- Sección de habilidades -->
         <section id="habilidades" class="seccion">
-            <h2>Lenguajes y Herramientas</h2>
+            <h2>LENGUAJES Y HERRAMIENTAS</h2>
             <div class="habilidades-container">
                 <div class="categoria-habilidades">
                     <h3>Lenguajes de Programación</h3>
@@ -551,26 +763,26 @@
 
         <!-- Sección de hobbies -->
         <section id="hobbies" class="seccion">
-            <h2>Mis Hobbies</h2>
+            <h2>MIS HOBBIES</h2>
             <div class="hobbies-grid">
                 <div class="hobbie">
                     <img src="lectura.png" alt="Lectura">
                     <div class="hobbie-contenido">
-                        <h3>Lectura</h3>
+                        <h3>LECTURA</h3>
                         <p>Lector activo enfocado en fantasia, mundos diferentes, contexto detras de cada escrito. Mi interés se centra en el análisis crítico de la estructura narrativa, el desarrollo de personajes y la exploración de temas complejos. Disfruto deconstruyendo el estilo del autor y su impacto en el contexto literario.</p>
                     </div>
                 </div>
                 <div class="hobbie">
                     <img src="f1.png" alt="Fórmula 1">
                     <div class="hobbie-contenido">
-                        <h3>Fórmula 1</h3>
+                        <h3>FÓRMULA 1</h3>
                         <p>Seguidor de la Fórmula 1, con interés particular en el análisis de la estrategia de carrera, la telemetría y el desarrollo de la ingeniería aerodinámica. Evalúo el rendimiento de pilotos y equipos basándome en la gestión de neumáticos, las paradas en pits y la adaptación a las normativas técnicas de cada temporada.</p>
                     </div>
                 </div>
                 <div class="hobbie">
                     <img src="videojuego.png" alt="Videojuegos">
                     <div class="hobbie-contenido">
-                        <h3>Videojuegos</h3>
+                        <h3>VIDEOJUEGOS</h3>
                         <p>Disfrutar de videojuegos como forma de entretenimiento y análisis de mecánicas de juego.</p>
                     </div>
                 </div>
@@ -579,10 +791,10 @@
 
         <!-- Sección de criptografía -->
         <section id="criptografia" class="seccion">
-            <h2>Acerca de Criptografía</h2>
+            <h2>ACERCA DE CRIPTOGRAFÍA</h2>
             <div class="criptografia-contenido">
                 <div class="criptografia-texto">
-                    <h3>El Telegrama Zimmermann</h3>
+                    <h3>EL TELEGRAMA ZIMMERMANN</h3>
                     <p>Un telegrama diplomático secreto enviado por el Ministro de Asuntos Exteriores del Imperio Alemán, Arthur Zimmermann, al embajador alemán en México.</p>
                     <p>El mensaje proponía una alianza militar entre Alemania y México si Estados Unidos entraba en la Primera Guerra Mundial contra Alemania. A cambio, Alemania prometía ayudar a México a recuperar los territorios de Texas, Nuevo México y Arizona.</p>
                     <p>El telegrama fue interceptado y descifrado por la inteligencia naval británica (específicamente la "Sala 40").</p>
@@ -593,15 +805,14 @@
                 </div>
             </div>
         </section>
-
-        
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Brandon David Aguilar Cabadas</p>
-            <p>Página web personal creada para mi clase favorita Crypto</p>
+            <p>&copy; 2025 BRANDON DAVID AGUILAR CABADAS</p>
+            <p>PÁGINA WEB PERSONAL CREADA PARA MI CLASE FAVORITA: CRYPTO</p>
+            
         </div>
     </footer>
 
@@ -623,6 +834,17 @@
                 }
             });
         });
+        
+        // Efecto de parpadeo de neón aleatorio
+        const neonTitles = document.querySelectorAll('.neon-text, .seccion h2');
+        
+        setInterval(() => {
+            const randomTitle = neonTitles[Math.floor(Math.random() * neonTitles.length)];
+            randomTitle.style.animation = 'none';
+            setTimeout(() => {
+                randomTitle.style.animation = '';
+            }, 100);
+        }, 3000);
     </script>
 </body>
 </html>
