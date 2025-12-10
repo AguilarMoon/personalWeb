@@ -5,26 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brandon Aguilar - Página Personal</title>
     <style>
-        /* Importar fuente TRON-style */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        /* Importar fuentes */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
         
-        /* Estilos generales - TRON AESTHETIC */
+        /* Estilos generales */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Orbitron', 'Courier New', monospace;
         }
         
         body {
-            background-color: #000000;
-            color: #00d9ff;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
         
-        /* Efecto de rejilla de fondo (grid) - estilo TRON */
+        /* MODO TRON (por defecto) */
+        body {
+            background-color: #000000;
+            color: #00d9ff;
+            font-family: 'Orbitron', 'Courier New', monospace;
+        }
+        
+        /* MODO FORMAL */
+        body.formal-mode {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        /* Botón de cambio de modo */
+        .theme-toggle {
+            position: fixed;
+            top: 90px;
+            right: 30px;
+            z-index: 1001;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 217, 255, 0.1));
+            color: #00d9ff;
+            border: 2px solid #00d9ff;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            transition: all 0.3s;
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.7);
+            transform: translateY(-3px);
+        }
+        
+        body.formal-mode .theme-toggle {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border: 2px solid #1e3a8a;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body.formal-mode .theme-toggle:hover {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.5);
+        }
+        
+        /* Efecto de rejilla de fondo - MODO TRON */
         body::before {
             content: "";
             position: fixed;
@@ -39,6 +89,12 @@
             z-index: -3;
             pointer-events: none;
             animation: gridMove 20s linear infinite;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.formal-mode::before {
+            opacity: 0;
         }
         
         @keyframes gridMove {
@@ -46,7 +102,7 @@
             100% { transform: perspective(500px) rotateX(60deg) translateY(80px); }
         }
         
-        /* Líneas de energía en el fondo */
+        /* Líneas de energía en el fondo - MODO TRON */
         body::after {
             content: "";
             position: fixed;
@@ -60,6 +116,12 @@
             z-index: -2;
             pointer-events: none;
             animation: energyPulse 3s ease-in-out infinite;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.formal-mode::after {
+            opacity: 0;
         }
         
         @keyframes energyPulse {
@@ -85,7 +147,7 @@
             margin-bottom: 15px;
         }
         
-        /* Header y navegación - Estilo TRON */
+        /* Header y navegación */
         header {
             background: rgba(0, 0, 0, 0.95);
             color: #00d9ff;
@@ -98,6 +160,14 @@
                         0 0 50px rgba(0, 217, 255, 0.3) inset;
             backdrop-filter: blur(10px);
             border-bottom: 3px solid #00d9ff;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode header {
+            background: linear-gradient(135deg, #7c2d4d, #991b1b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(124, 45, 77, 0.3);
+            border-bottom: 3px solid #991b1b;
         }
         
         nav {
@@ -115,6 +185,13 @@
                          0 0 30px #00d9ff;
             letter-spacing: 3px;
             animation: logoGlow 2s ease-in-out infinite;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .logo {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: none;
         }
         
         @keyframes logoGlow {
@@ -143,6 +220,11 @@
             position: relative;
         }
         
+        body.formal-mode .nav-links a {
+            color: white;
+            letter-spacing: 1px;
+        }
+        
         .nav-links a:hover {
             color: #ffffff;
             border: 2px solid #00d9ff;
@@ -152,7 +234,15 @@
             background-color: rgba(0, 217, 255, 0.1);
         }
         
-        /* Sección de presentación - Estilo TRON */
+        body.formal-mode .nav-links a:hover {
+            color: white;
+            border: 2px solid white;
+            text-shadow: none;
+            box-shadow: none;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Sección de presentación */
         #presentacion {
             background: linear-gradient(180deg, 
                 rgba(0, 0, 0, 1) 0%, 
@@ -163,6 +253,12 @@
             margin-top: 70px;
             position: relative;
             overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode #presentacion {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+            color: white;
         }
         
         /* Líneas de energía horizontales */
@@ -182,6 +278,12 @@
             );
             z-index: 0;
             animation: lineMove 5s linear infinite;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.formal-mode #presentacion::before {
+            opacity: 0;
         }
         
         @keyframes lineMove {
@@ -201,6 +303,14 @@
                 rgba(0, 0, 0, 1) 0%, 
                 transparent 100%);
             z-index: 0;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.formal-mode #presentacion::after {
+            background: linear-gradient(to top, 
+                rgba(30, 58, 138, 0.3) 0%, 
+                transparent 100%);
         }
         
         .presentacion-contenedor {
@@ -227,12 +337,23 @@
             filter: brightness(1.1) contrast(1.2);
         }
         
+        body.formal-mode .perfil {
+            border: 5px solid white;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            filter: brightness(1) contrast(1);
+        }
+        
         .perfil:hover {
             box-shadow: 0 0 40px rgba(0, 217, 255, 1),
                         0 0 80px rgba(0, 217, 255, 0.7),
                         0 0 120px rgba(0, 217, 255, 0.5);
             transform: scale(1.05);
             border-color: #ffffff;
+        }
+        
+        body.formal-mode .perfil:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: white;
         }
         
         .presentacion-texto {
@@ -250,6 +371,13 @@
                          0 0 40px #00d9ff;
             letter-spacing: 3px;
             font-weight: 900;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .presentacion-texto h1 {
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
         }
         
         .presentacion-texto p {
@@ -257,6 +385,11 @@
             margin-bottom: 25px;
             color: #ffffff;
             text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .presentacion-texto p {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         .btn {
@@ -277,6 +410,15 @@
                         0 0 30px rgba(0, 217, 255, 0.2) inset;
             position: relative;
             overflow: hidden;
+        }
+        
+        body.formal-mode .btn {
+            background: linear-gradient(135deg, #7c2d4d, #991b1b);
+            color: white;
+            border: 2px solid #991b1b;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(124, 45, 77, 0.3);
+            letter-spacing: 1px;
         }
         
         .btn::before {
@@ -303,7 +445,13 @@
             border-color: #ffffff;
         }
         
-        /* Secciones de contenido - Estilo TRON */
+        body.formal-mode .btn:hover {
+            background: linear-gradient(135deg, #991b1b, #b91c1c);
+            box-shadow: 0 6px 20px rgba(124, 45, 77, 0.5);
+            border-color: #991b1b;
+        }
+        
+        /* Secciones de contenido */
         .seccion {
             background: linear-gradient(135deg, rgba(0, 30, 50, 0.6), rgba(0, 0, 0, 0.9));
             margin-bottom: 30px;
@@ -315,6 +463,14 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(5px);
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .seccion {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
         }
         
         .seccion::before {
@@ -329,6 +485,12 @@
                 #00d9ff,
                 transparent);
             animation: scanline 3s linear infinite;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.formal-mode .seccion::before {
+            opacity: 0;
         }
         
         @keyframes scanline {
@@ -347,6 +509,12 @@
                 transparent,
                 #00d9ff,
                 transparent);
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.formal-mode .seccion::after {
+            opacity: 0;
         }
         
         .seccion h2 {
@@ -359,6 +527,16 @@
             margin-bottom: 30px;
             letter-spacing: 3px;
             font-weight: 900;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .seccion h2 {
+            color: #7c2d4d;
+            text-shadow: none;
+            font-size: 28px;
+            border-bottom: 3px solid #1e3a8a;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
         
         .seccion h3 {
@@ -367,6 +545,14 @@
             text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
             font-weight: 700;
             letter-spacing: 2px;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .seccion h3 {
+            color: #1e3a8a;
+            text-shadow: none;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
         
         /* Formación académica */
@@ -374,6 +560,11 @@
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .formacion-item {
+            border-bottom: 2px solid #e5e7eb;
         }
         
         .formacion-item:last-child {
@@ -382,6 +573,15 @@
         
         .formacion-item h3 {
             color: #00d9ff;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .formacion-item h3 {
+            color: #1e3a8a;
+        }
+        
+        body.formal-mode .formacion-item p {
+            color: #4b5563;
         }
         
         /* Información de contacto */
@@ -404,6 +604,13 @@
             box-shadow: 0 0 15px rgba(0, 217, 255, 0.2) inset;
         }
         
+        body.formal-mode .contacto-item {
+            background: #f3f4f6;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            box-shadow: none;
+        }
+        
         .contacto-item:hover {
             background: rgba(0, 217, 255, 0.2);
             border-color: #00d9ff;
@@ -412,10 +619,26 @@
                         0 0 35px rgba(0, 217, 255, 0.3) inset;
         }
         
+        body.formal-mode .contacto-item:hover {
+            background: #e5e7eb;
+            border-color: #1e3a8a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
         .contacto-item i {
             margin-right: 10px;
             color: #00d9ff;
             text-shadow: 0 0 5px #00d9ff;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .contacto-item i {
+            color: #1e3a8a;
+            text-shadow: none;
+        }
+        
+        body.formal-mode .contacto-item span {
+            color: #374151;
         }
         
         /* Redes sociales */
@@ -442,6 +665,16 @@
             letter-spacing: 1px;
         }
         
+        body.formal-mode .red-social {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            border-radius: 25px;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
         .red-social:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 30px rgba(0, 217, 255, 0.7),
@@ -451,10 +684,20 @@
             border-color: #00d9ff;
         }
         
+        body.formal-mode .red-social:hover {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.5);
+        }
+        
         .red-social i {
             margin-right: 10px;
             font-size: 20px;
             text-shadow: 0 0 5px #00d9ff;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .red-social i {
+            text-shadow: none;
         }
         
         /* Hobbies */
@@ -475,6 +718,13 @@
             position: relative;
         }
         
+        body.formal-mode .hobbie {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
         .hobbie::before {
             content: "";
             position: absolute;
@@ -492,11 +742,20 @@
             opacity: 1;
         }
         
+        body.formal-mode .hobbie::before {
+            display: none;
+        }
+        
         .hobbie:hover {
             transform: translateY(-10px);
             box-shadow: 0 0 50px rgba(0, 217, 255, 0.6),
                         0 0 70px rgba(0, 217, 255, 0.4);
             border-color: #00d9ff;
+        }
+        
+        body.formal-mode .hobbie:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #1e3a8a;
         }
         
         .hobbie img {
@@ -505,6 +764,12 @@
             object-fit: cover;
             border-bottom: 3px solid #00d9ff;
             filter: brightness(0.9) contrast(1.2);
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .hobbie img {
+            border-bottom: 3px solid #1e3a8a;
+            filter: brightness(1) contrast(1);
         }
         
         .hobbie-contenido {
@@ -515,6 +780,16 @@
             color: #00d9ff;
             margin-bottom: 10px;
             text-shadow: 0 0 10px #00d9ff;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .hobbie h3 {
+            color: #7c2d4d;
+            text-shadow: none;
+        }
+        
+        body.formal-mode .hobbie-contenido p {
+            color: #4b5563;
         }
         
         /* Criptografía */
@@ -528,6 +803,10 @@
             flex: 1;
         }
         
+        body.formal-mode .criptografia-texto p {
+            color: #4b5563;
+        }
+        
         .criptografia-imagen {
             flex: 1;
             text-align: center;
@@ -538,6 +817,13 @@
             border-radius: 0;
             box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
             border: 3px solid #00d9ff;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .criptografia-imagen img {
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 3px solid #1e3a8a;
         }
         
         /* Tablas para certificaciones y proyectos */
@@ -551,6 +837,16 @@
             padding: 15px 18px;
             text-align: left;
             border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode th,
+        body.formal-mode td {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        body.formal-mode td {
+            color: #374151;
         }
         
         th {
@@ -560,6 +856,16 @@
             text-shadow: 0 0 10px #00d9ff;
             border-bottom: 3px solid #00d9ff;
             letter-spacing: 2px;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode th {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            text-shadow: none;
+            border-bottom: 3px solid #1e40af;
+            letter-spacing: 0.5px;
+            font-weight: 700;
         }
         
         tr {
@@ -569,6 +875,11 @@
         tr:hover {
             background: rgba(0, 217, 255, 0.1);
             box-shadow: 0 0 20px rgba(0, 217, 255, 0.3) inset;
+        }
+        
+        body.formal-mode tr:hover {
+            background: #f9fafb;
+            box-shadow: none;
         }
         
         /* Habilidades */
@@ -586,6 +897,14 @@
             border-radius: 0;
             border: 2px solid rgba(0, 217, 255, 0.4);
             box-shadow: 0 0 20px rgba(0, 217, 255, 0.2) inset;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .categoria-habilidades {
+            background: #f9fafb;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         
         .habilidades-lista {
@@ -608,12 +927,27 @@
             letter-spacing: 1px;
         }
         
+        body.formal-mode .habilidad {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+            letter-spacing: 0.3px;
+            font-weight: 600;
+        }
+        
         .habilidad:hover {
             background: rgba(0, 217, 255, 0.3);
             color: #ffffff;
             transform: scale(1.05);
             box-shadow: 0 0 25px rgba(0, 217, 255, 0.7),
                         0 0 35px rgba(0, 217, 255, 0.4) inset;
+        }
+        
+        body.formal-mode .habilidad:hover {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
         }
         
         /* Footer */
@@ -627,6 +961,14 @@
             overflow: hidden;
             border-top: 3px solid #00d9ff;
             box-shadow: 0 -5px 30px rgba(0, 217, 255, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode footer {
+            background: linear-gradient(135deg, #7c2d4d, #991b1b);
+            color: white;
+            border-top: 3px solid #991b1b;
+            box-shadow: 0 -4px 15px rgba(124, 45, 77, 0.3);
         }
         
         footer::before {
@@ -644,6 +986,12 @@
                 rgba(0, 217, 255, 0.05) 52px
             );
             z-index: 0;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        body.formal-mode footer::before {
+            opacity: 0;
         }
         
         footer p {
@@ -654,6 +1002,14 @@
             text-shadow: 0 0 5px #00d9ff;
             font-weight: 600;
             letter-spacing: 1px;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode footer p {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
         
         /* Efectos de neón para títulos principales */
@@ -665,6 +1021,12 @@
                 0 0 20px #00d9ff,
                 0 0 40px #00d9ff,
                 0 0 80px #00d9ff;
+            transition: all 0.5s ease;
+        }
+        
+        body.formal-mode .neon-text {
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         }
         
         /* Responsive */
@@ -708,6 +1070,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Botón de cambio de modo -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-text">MODO FORMAL</span>
+    </button>
+
     <header>
         <div class="container">
             <nav>
@@ -953,6 +1320,35 @@
     </footer>
 
     <script>
+        // Función para cambiar entre modos
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            
+            body.classList.toggle('formal-mode');
+            
+            if (body.classList.contains('formal-mode')) {
+                themeText.textContent = 'MODO TRON';
+                localStorage.setItem('theme', 'formal');
+            } else {
+                themeText.textContent = 'MODO FORMAL';
+                localStorage.setItem('theme', 'tron');
+            }
+        }
+        
+        // Cargar tema guardado
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            
+            if (savedTheme === 'formal') {
+                body.classList.add('formal-mode');
+                themeText.textContent = 'MODO TRON';
+            }
+        });
+        
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -970,6 +1366,7 @@
             });
         });
         
+        // Efecto de parpadeo de neón
         const neonTitles = document.querySelectorAll('.neon-text, .seccion h2');
         
         setInterval(() => {
